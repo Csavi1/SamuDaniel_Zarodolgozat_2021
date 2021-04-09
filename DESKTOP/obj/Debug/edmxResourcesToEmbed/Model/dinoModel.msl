@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dinobazisModelStoreContainer" CdmEntityContainer="dinoContext">
+    <EntitySetMapping Name="dinok">
+      <EntityTypeMapping TypeName="dinobazisModel.dinok">
+        <MappingFragment StoreEntitySet="dinok">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nev" ColumnName="nev" />
+          <ScalarProperty Name="nevvariaciok" ColumnName="nevvariaciok" />
+          <ScalarProperty Name="felfedezo_id" ColumnName="felfedezo_id" />
+          <ScalarProperty Name="felfedezes_datuma" ColumnName="felfedezes_datuma" />
+          <ScalarProperty Name="taplalkozasi_forma_id" ColumnName="taplalkozasi_forma_id" />
+          <ScalarProperty Name="testhossz" ColumnName="testhossz" />
+          <ScalarProperty Name="testtomeg" ColumnName="testtomeg" />
+          <ScalarProperty Name="leiras" ColumnName="leiras" />
+          <ScalarProperty Name="kep" ColumnName="kep" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="elohelyek">
+      <EntityTypeMapping TypeName="dinobazisModel.elohelyek">
+        <MappingFragment StoreEntitySet="elohelyek">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nev" ColumnName="nev" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="felfedezok">
+      <EntityTypeMapping TypeName="dinobazisModel.felfedezok">
+        <MappingFragment StoreEntitySet="felfedezok">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nev" ColumnName="nev" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="felhasznalok">
+      <EntityTypeMapping TypeName="dinobazisModel.felhasznalok">
+        <MappingFragment StoreEntitySet="felhasznalok">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="nev" ColumnName="nev" />
+          <ScalarProperty Name="jelszo" ColumnName="jelszo" />
+          <ScalarProperty Name="fejleszto_logikai" ColumnName="fejleszto_logikai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="korok">
+      <EntityTypeMapping TypeName="dinobazisModel.korok">
+        <MappingFragment StoreEntitySet="korok">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nev" ColumnName="nev" />
+          <ScalarProperty Name="idopont" ColumnName="idopont" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lelohelyek">
+      <EntityTypeMapping TypeName="dinobazisModel.lelohelyek">
+        <MappingFragment StoreEntitySet="lelohelyek">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nev" ColumnName="nev" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="taplalek">
+      <EntityTypeMapping TypeName="dinobazisModel.taplalek">
+        <MappingFragment StoreEntitySet="taplalek">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nev" ColumnName="nev" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="taplalkozasi_forma">
+      <EntityTypeMapping TypeName="dinobazisModel.taplalkozasi_forma">
+        <MappingFragment StoreEntitySet="taplalkozasi_forma">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nev" ColumnName="nev" />
+          <ScalarProperty Name="tud_elnevezes" ColumnName="tud_elnevezes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="dino_es_elohely" TypeName="dinobazisModel.dino_es_elohely" StoreEntitySet="dino_es_elohely">
+      <EndProperty Name="dinok">
+        <ScalarProperty Name="id" ColumnName="dino_id" />
+      </EndProperty>
+      <EndProperty Name="elohelyek">
+        <ScalarProperty Name="id" ColumnName="elohely_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="dino_es_lelohely" TypeName="dinobazisModel.dino_es_lelohely" StoreEntitySet="dino_es_lelohely">
+      <EndProperty Name="dinok">
+        <ScalarProperty Name="id" ColumnName="dino_id" />
+      </EndProperty>
+      <EndProperty Name="lelohelyek">
+        <ScalarProperty Name="id" ColumnName="lelohely_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="mikorelt" TypeName="dinobazisModel.mikorelt" StoreEntitySet="mikorelt">
+      <EndProperty Name="dinok">
+        <ScalarProperty Name="id" ColumnName="dino_id" />
+      </EndProperty>
+      <EndProperty Name="korok">
+        <ScalarProperty Name="id" ColumnName="kor_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="taplalkozik" TypeName="dinobazisModel.taplalkozik" StoreEntitySet="taplalkozik">
+      <EndProperty Name="dinok">
+        <ScalarProperty Name="id" ColumnName="dino_id" />
+      </EndProperty>
+      <EndProperty Name="taplalek">
+        <ScalarProperty Name="id" ColumnName="taplalek_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

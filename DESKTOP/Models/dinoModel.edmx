@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dinoModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dinok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nev" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="felfedezo_id" Type="usmallint" Nullable="false" />
+          <Property Name="felfedezes_datuma" Type="usmallint" Nullable="false" />
+          <Property Name="mikorelt" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="lelohelyek" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="elohelyek" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="taplalek" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="taplalkozasi_forma_id" Type="usmallint" Nullable="false" />
+          <Property Name="testmeret" Type="varchar" MaxLength="40" />
+          <Property Name="testtomeg" Type="varchar" MaxLength="40" />
+          <Property Name="leiras" Type="text" Nullable="false" />
+          <Property Name="kep" Type="blob" />
+        </EntityType>
+        <EntityType Name="felfedezok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nev" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="felhasznalok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="nev" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="jelszo" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="fejleszto_logikai" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="taplalkozasi_forma">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nev" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="tud_elnevezes" Type="varchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <Association Name="dinok_ibfk_1">
+          <End Role="felfedezok" Type="Self.felfedezok" Multiplicity="1" />
+          <End Role="dinok" Type="Self.dinok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="felfedezok">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dinok">
+              <PropertyRef Name="felfedezo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dinok_ibfk_2">
+          <End Role="taplalkozasi_forma" Type="Self.taplalkozasi_forma" Multiplicity="1" />
+          <End Role="dinok" Type="Self.dinok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="taplalkozasi_forma">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dinok">
+              <PropertyRef Name="taplalkozasi_forma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dinoModelStoreContainer">
+          <EntitySet Name="dinok" EntityType="Self.dinok" Schema="dinobazis" store:Type="Tables" />
+          <EntitySet Name="felfedezok" EntityType="Self.felfedezok" Schema="dinobazis" store:Type="Tables" />
+          <EntitySet Name="felhasznalok" EntityType="Self.felhasznalok" Schema="dinobazis" store:Type="Tables" />
+          <EntitySet Name="taplalkozasi_forma" EntityType="Self.taplalkozasi_forma" Schema="dinobazis" store:Type="Tables" />
+          <AssociationSet Name="dinok_ibfk_1" Association="Self.dinok_ibfk_1">
+            <End Role="felfedezok" EntitySet="felfedezok" />
+            <End Role="dinok" EntitySet="dinok" />
+          </AssociationSet>
+          <AssociationSet Name="dinok_ibfk_2" Association="Self.dinok_ibfk_2">
+            <End Role="taplalkozasi_forma" EntitySet="taplalkozasi_forma" />
+            <End Role="dinok" EntitySet="dinok" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dinoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dinoContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dinok" EntityType="dinoModel.dinok" />
+          <EntitySet Name="felfedezok" EntityType="dinoModel.felfedezok" />
+          <EntitySet Name="felhasznalok" EntityType="dinoModel.felhasznalok" />
+          <EntitySet Name="taplalkozasi_forma" EntityType="dinoModel.taplalkozasi_forma" />
+          <AssociationSet Name="dinok_ibfk_1" Association="dinoModel.dinok_ibfk_1">
+            <End Role="felfedezok" EntitySet="felfedezok" />
+            <End Role="dinok" EntitySet="dinok" />
+          </AssociationSet>
+          <AssociationSet Name="dinok_ibfk_2" Association="dinoModel.dinok_ibfk_2">
+            <End Role="taplalkozasi_forma" EntitySet="taplalkozasi_forma" />
+            <End Role="dinok" EntitySet="dinok" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="dinok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nev" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="felfedezo_id" Type="Int32" Nullable="false" />
+          <Property Name="felfedezes_datuma" Type="Int32" Nullable="false" />
+          <Property Name="mikorelt" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="lelohelyek" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="elohelyek" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="taplalek" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="taplalkozasi_forma_id" Type="Int32" Nullable="false" />
+          <Property Name="testmeret" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="testtomeg" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="leiras" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="kep" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="felfedezok" Relationship="dinoModel.dinok_ibfk_1" FromRole="dinok" ToRole="felfedezok" />
+          <NavigationProperty Name="taplalkozasi_forma" Relationship="dinoModel.dinok_ibfk_2" FromRole="dinok" ToRole="taplalkozasi_forma" />
+        </EntityType>
+        <EntityType Name="felfedezok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nev" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dinok" Relationship="dinoModel.dinok_ibfk_1" FromRole="felfedezok" ToRole="dinok" />
+        </EntityType>
+        <EntityType Name="felhasznalok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="nev" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="jelszo" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="fejleszto_logikai" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="taplalkozasi_forma">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nev" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="tud_elnevezes" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dinok" Relationship="dinoModel.dinok_ibfk_2" FromRole="taplalkozasi_forma" ToRole="dinok" />
+        </EntityType>
+        <Association Name="dinok_ibfk_1">
+          <End Type="dinoModel.felfedezok" Role="felfedezok" Multiplicity="1" />
+          <End Type="dinoModel.dinok" Role="dinok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="felfedezok">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dinok">
+              <PropertyRef Name="felfedezo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dinok_ibfk_2">
+          <End Type="dinoModel.taplalkozasi_forma" Role="taplalkozasi_forma" Multiplicity="1" />
+          <End Type="dinoModel.dinok" Role="dinok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="taplalkozasi_forma">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dinok">
+              <PropertyRef Name="taplalkozasi_forma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dinoModelStoreContainer" CdmEntityContainer="dinoContext">
+          <EntitySetMapping Name="dinok">
+            <EntityTypeMapping TypeName="dinoModel.dinok">
+              <MappingFragment StoreEntitySet="dinok">
+                <ScalarProperty Name="kep" ColumnName="kep" />
+                <ScalarProperty Name="leiras" ColumnName="leiras" />
+                <ScalarProperty Name="testtomeg" ColumnName="testtomeg" />
+                <ScalarProperty Name="testmeret" ColumnName="testmeret" />
+                <ScalarProperty Name="taplalkozasi_forma_id" ColumnName="taplalkozasi_forma_id" />
+                <ScalarProperty Name="taplalek" ColumnName="taplalek" />
+                <ScalarProperty Name="elohelyek" ColumnName="elohelyek" />
+                <ScalarProperty Name="lelohelyek" ColumnName="lelohelyek" />
+                <ScalarProperty Name="mikorelt" ColumnName="mikorelt" />
+                <ScalarProperty Name="felfedezes_datuma" ColumnName="felfedezes_datuma" />
+                <ScalarProperty Name="felfedezo_id" ColumnName="felfedezo_id" />
+                <ScalarProperty Name="nev" ColumnName="nev" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="felfedezok">
+            <EntityTypeMapping TypeName="dinoModel.felfedezok">
+              <MappingFragment StoreEntitySet="felfedezok">
+                <ScalarProperty Name="nev" ColumnName="nev" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="felhasznalok">
+            <EntityTypeMapping TypeName="dinoModel.felhasznalok">
+              <MappingFragment StoreEntitySet="felhasznalok">
+                <ScalarProperty Name="fejleszto_logikai" ColumnName="fejleszto_logikai" />
+                <ScalarProperty Name="jelszo" ColumnName="jelszo" />
+                <ScalarProperty Name="nev" ColumnName="nev" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="taplalkozasi_forma">
+            <EntityTypeMapping TypeName="dinoModel.taplalkozasi_forma">
+              <MappingFragment StoreEntitySet="taplalkozasi_forma">
+                <ScalarProperty Name="tud_elnevezes" ColumnName="tud_elnevezes" />
+                <ScalarProperty Name="nev" ColumnName="nev" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

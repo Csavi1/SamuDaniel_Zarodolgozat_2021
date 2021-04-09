@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dinoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="dinoContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="dinok" EntityType="dinoModel.dinok" />
+    <EntitySet Name="felfedezok" EntityType="dinoModel.felfedezok" />
+    <EntitySet Name="felhasznalok" EntityType="dinoModel.felhasznalok" />
+    <EntitySet Name="taplalkozasi_forma" EntityType="dinoModel.taplalkozasi_forma" />
+    <AssociationSet Name="dinok_ibfk_1" Association="dinoModel.dinok_ibfk_1">
+      <End Role="felfedezok" EntitySet="felfedezok" />
+      <End Role="dinok" EntitySet="dinok" />
+    </AssociationSet>
+    <AssociationSet Name="dinok_ibfk_2" Association="dinoModel.dinok_ibfk_2">
+      <End Role="taplalkozasi_forma" EntitySet="taplalkozasi_forma" />
+      <End Role="dinok" EntitySet="dinok" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="dinok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nev" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="felfedezo_id" Type="Int32" Nullable="false" />
+    <Property Name="felfedezes_datuma" Type="Int32" Nullable="false" />
+    <Property Name="mikorelt" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="lelohelyek" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="elohelyek" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="taplalek" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="taplalkozasi_forma_id" Type="Int32" Nullable="false" />
+    <Property Name="testmeret" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="testtomeg" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="leiras" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="kep" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="felfedezok" Relationship="dinoModel.dinok_ibfk_1" FromRole="dinok" ToRole="felfedezok" />
+    <NavigationProperty Name="taplalkozasi_forma" Relationship="dinoModel.dinok_ibfk_2" FromRole="dinok" ToRole="taplalkozasi_forma" />
+  </EntityType>
+  <EntityType Name="felfedezok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nev" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="dinok" Relationship="dinoModel.dinok_ibfk_1" FromRole="felfedezok" ToRole="dinok" />
+  </EntityType>
+  <EntityType Name="felhasznalok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="nev" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="jelszo" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="fejleszto_logikai" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="taplalkozasi_forma">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nev" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="tud_elnevezes" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="dinok" Relationship="dinoModel.dinok_ibfk_2" FromRole="taplalkozasi_forma" ToRole="dinok" />
+  </EntityType>
+  <Association Name="dinok_ibfk_1">
+    <End Type="dinoModel.felfedezok" Role="felfedezok" Multiplicity="1" />
+    <End Type="dinoModel.dinok" Role="dinok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="felfedezok">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dinok">
+        <PropertyRef Name="felfedezo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dinok_ibfk_2">
+    <End Type="dinoModel.taplalkozasi_forma" Role="taplalkozasi_forma" Multiplicity="1" />
+    <End Type="dinoModel.dinok" Role="dinok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="taplalkozasi_forma">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dinok">
+        <PropertyRef Name="taplalkozasi_forma_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

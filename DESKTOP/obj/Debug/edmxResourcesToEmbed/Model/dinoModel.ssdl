@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dinobazisModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.dinobazis.dino_es_elohely' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="dino_es_elohely">
+    <Key>
+      <PropertyRef Name="dino_id" />
+      <PropertyRef Name="elohely_id" />
+    </Key>
+    <Property Name="dino_id" Type="usmallint" Nullable="false" />
+    <Property Name="elohely_id" Type="usmallint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.dinobazis.dino_es_lelohely' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="dino_es_lelohely">
+    <Key>
+      <PropertyRef Name="dino_id" />
+      <PropertyRef Name="lelohely_id" />
+    </Key>
+    <Property Name="dino_id" Type="usmallint" Nullable="false" />
+    <Property Name="lelohely_id" Type="usmallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="dinok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nev" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="nevvariaciok" Type="varchar" MaxLength="400" />
+    <Property Name="felfedezo_id" Type="usmallint" Nullable="false" />
+    <Property Name="felfedezes_datuma" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="taplalkozasi_forma_id" Type="usmallint" Nullable="false" />
+    <Property Name="testhossz" Type="varchar" MaxLength="40" />
+    <Property Name="testtomeg" Type="varchar" MaxLength="40" />
+    <Property Name="leiras" Type="text" Nullable="false" />
+    <Property Name="kep" Type="blob" />
+  </EntityType>
+  <EntityType Name="elohelyek">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nev" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="felfedezok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nev" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="felhasznalok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="nev" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="jelszo" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="fejleszto_logikai" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="korok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nev" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="idopont" Type="varchar" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="lelohelyek">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nev" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.dinobazis.mikorelt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="mikorelt">
+    <Key>
+      <PropertyRef Name="dino_id" />
+      <PropertyRef Name="kor_id" />
+    </Key>
+    <Property Name="dino_id" Type="usmallint" Nullable="false" />
+    <Property Name="kor_id" Type="usmallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="taplalek">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nev" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="taplalkozasi_forma">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nev" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="tud_elnevezes" Type="varchar" MaxLength="9" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.dinobazis.taplalkozik' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="taplalkozik">
+    <Key>
+      <PropertyRef Name="dino_id" />
+      <PropertyRef Name="taplalek_id" />
+    </Key>
+    <Property Name="dino_id" Type="usmallint" Nullable="false" />
+    <Property Name="taplalek_id" Type="usmallint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.dinobazis.dinoszauruszok' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <Association Name="dino_es_elohely_ibfk_1">
+    <End Role="dinok" Type="Self.dinok" Multiplicity="1" />
+    <End Role="dino_es_elohely" Type="Self.dino_es_elohely" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dinok">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dino_es_elohely">
+        <PropertyRef Name="dino_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dino_es_elohely_ibfk_2">
+    <End Role="elohelyek" Type="Self.elohelyek" Multiplicity="1" />
+    <End Role="dino_es_elohely" Type="Self.dino_es_elohely" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="elohelyek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dino_es_elohely">
+        <PropertyRef Name="elohely_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dino_es_lelohely_ibfk_1">
+    <End Role="dinok" Type="Self.dinok" Multiplicity="1" />
+    <End Role="dino_es_lelohely" Type="Self.dino_es_lelohely" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dinok">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dino_es_lelohely">
+        <PropertyRef Name="dino_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dino_es_lelohely_ibfk_2">
+    <End Role="lelohelyek" Type="Self.lelohelyek" Multiplicity="1" />
+    <End Role="dino_es_lelohely" Type="Self.dino_es_lelohely" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lelohelyek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dino_es_lelohely">
+        <PropertyRef Name="lelohely_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dinok_ibfk_1">
+    <End Role="felfedezok" Type="Self.felfedezok" Multiplicity="1" />
+    <End Role="dinok" Type="Self.dinok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="felfedezok">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dinok">
+        <PropertyRef Name="felfedezo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dinok_ibfk_2">
+    <End Role="taplalkozasi_forma" Type="Self.taplalkozasi_forma" Multiplicity="1" />
+    <End Role="dinok" Type="Self.dinok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="taplalkozasi_forma">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dinok">
+        <PropertyRef Name="taplalkozasi_forma_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="mikorelt_ibfk_1">
+    <End Role="dinok" Type="Self.dinok" Multiplicity="1" />
+    <End Role="mikorelt" Type="Self.mikorelt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dinok">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mikorelt">
+        <PropertyRef Name="dino_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="mikorelt_ibfk_2">
+    <End Role="korok" Type="Self.korok" Multiplicity="1" />
+    <End Role="mikorelt" Type="Self.mikorelt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="korok">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mikorelt">
+        <PropertyRef Name="kor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="taplalkozik_ibfk_1">
+    <End Role="dinok" Type="Self.dinok" Multiplicity="1" />
+    <End Role="taplalkozik" Type="Self.taplalkozik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dinok">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="taplalkozik">
+        <PropertyRef Name="dino_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="taplalkozik_ibfk_2">
+    <End Role="taplalek" Type="Self.taplalek" Multiplicity="1" />
+    <End Role="taplalkozik" Type="Self.taplalkozik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="taplalek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="taplalkozik">
+        <PropertyRef Name="taplalek_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dinobazisModelStoreContainer">
+    <EntitySet Name="dinok" EntityType="Self.dinok" Schema="dinobazis" store:Type="Tables" />
+    <EntitySet Name="elohelyek" EntityType="Self.elohelyek" Schema="dinobazis" store:Type="Tables" />
+    <EntitySet Name="felfedezok" EntityType="Self.felfedezok" Schema="dinobazis" store:Type="Tables" />
+    <EntitySet Name="felhasznalok" EntityType="Self.felhasznalok" Schema="dinobazis" store:Type="Tables" />
+    <EntitySet Name="korok" EntityType="Self.korok" Schema="dinobazis" store:Type="Tables" />
+    <EntitySet Name="lelohelyek" EntityType="Self.lelohelyek" Schema="dinobazis" store:Type="Tables" />
+    <EntitySet Name="taplalek" EntityType="Self.taplalek" Schema="dinobazis" store:Type="Tables" />
+    <EntitySet Name="taplalkozasi_forma" EntityType="Self.taplalkozasi_forma" Schema="dinobazis" store:Type="Tables" />
+    <EntitySet Name="dino_es_elohely" EntityType="Self.dino_es_elohely" store:Type="Tables" store:Schema="dinobazis">
+      <DefiningQuery>SELECT
+`dino_es_elohely`.`dino_id`, 
+`dino_es_elohely`.`elohely_id`
+FROM `dino_es_elohely` AS `dino_es_elohely`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="dino_es_lelohely" EntityType="Self.dino_es_lelohely" store:Type="Tables" store:Schema="dinobazis">
+      <DefiningQuery>SELECT
+`dino_es_lelohely`.`dino_id`, 
+`dino_es_lelohely`.`lelohely_id`
+FROM `dino_es_lelohely` AS `dino_es_lelohely`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="mikorelt" EntityType="Self.mikorelt" store:Type="Tables" store:Schema="dinobazis">
+      <DefiningQuery>SELECT
+`mikorelt`.`dino_id`, 
+`mikorelt`.`kor_id`
+FROM `mikorelt` AS `mikorelt`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="taplalkozik" EntityType="Self.taplalkozik" store:Type="Tables" store:Schema="dinobazis">
+      <DefiningQuery>SELECT
+`taplalkozik`.`dino_id`, 
+`taplalkozik`.`taplalek_id`
+FROM `taplalkozik` AS `taplalkozik`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="dino_es_elohely_ibfk_1" Association="Self.dino_es_elohely_ibfk_1">
+      <End Role="dinok" EntitySet="dinok" />
+      <End Role="dino_es_elohely" EntitySet="dino_es_elohely" />
+    </AssociationSet>
+    <AssociationSet Name="dino_es_elohely_ibfk_2" Association="Self.dino_es_elohely_ibfk_2">
+      <End Role="elohelyek" EntitySet="elohelyek" />
+      <End Role="dino_es_elohely" EntitySet="dino_es_elohely" />
+    </AssociationSet>
+    <AssociationSet Name="dino_es_lelohely_ibfk_1" Association="Self.dino_es_lelohely_ibfk_1">
+      <End Role="dinok" EntitySet="dinok" />
+      <End Role="dino_es_lelohely" EntitySet="dino_es_lelohely" />
+    </AssociationSet>
+    <AssociationSet Name="dino_es_lelohely_ibfk_2" Association="Self.dino_es_lelohely_ibfk_2">
+      <End Role="lelohelyek" EntitySet="lelohelyek" />
+      <End Role="dino_es_lelohely" EntitySet="dino_es_lelohely" />
+    </AssociationSet>
+    <AssociationSet Name="dinok_ibfk_1" Association="Self.dinok_ibfk_1">
+      <End Role="felfedezok" EntitySet="felfedezok" />
+      <End Role="dinok" EntitySet="dinok" />
+    </AssociationSet>
+    <AssociationSet Name="dinok_ibfk_2" Association="Self.dinok_ibfk_2">
+      <End Role="taplalkozasi_forma" EntitySet="taplalkozasi_forma" />
+      <End Role="dinok" EntitySet="dinok" />
+    </AssociationSet>
+    <AssociationSet Name="mikorelt_ibfk_1" Association="Self.mikorelt_ibfk_1">
+      <End Role="dinok" EntitySet="dinok" />
+      <End Role="mikorelt" EntitySet="mikorelt" />
+    </AssociationSet>
+    <AssociationSet Name="mikorelt_ibfk_2" Association="Self.mikorelt_ibfk_2">
+      <End Role="korok" EntitySet="korok" />
+      <End Role="mikorelt" EntitySet="mikorelt" />
+    </AssociationSet>
+    <AssociationSet Name="taplalkozik_ibfk_1" Association="Self.taplalkozik_ibfk_1">
+      <End Role="dinok" EntitySet="dinok" />
+      <End Role="taplalkozik" EntitySet="taplalkozik" />
+    </AssociationSet>
+    <AssociationSet Name="taplalkozik_ibfk_2" Association="Self.taplalkozik_ibfk_2">
+      <End Role="taplalek" EntitySet="taplalek" />
+      <End Role="taplalkozik" EntitySet="taplalkozik" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

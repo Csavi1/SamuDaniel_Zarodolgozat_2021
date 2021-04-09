@@ -1,0 +1,5 @@
+E-mail cím: admin@gmail.com
+Jelszó: admin
+
+E-mail cím: user@gmail.com
+Jelszó: Password1

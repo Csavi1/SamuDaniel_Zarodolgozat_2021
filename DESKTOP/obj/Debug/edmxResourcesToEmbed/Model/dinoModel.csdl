@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dinobazisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="dinok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nev" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nevvariaciok" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="felfedezo_id" Type="Int32" Nullable="false" />
+    <Property Name="felfedezes_datuma" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="taplalkozasi_forma_id" Type="Int32" Nullable="false" />
+    <Property Name="testhossz" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="testtomeg" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="leiras" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kep" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="felfedezok" Relationship="Self.dinok_ibfk_1" FromRole="dinok" ToRole="felfedezok" />
+    <NavigationProperty Name="taplalkozasi_forma" Relationship="Self.dinok_ibfk_2" FromRole="dinok" ToRole="taplalkozasi_forma" />
+    <NavigationProperty Name="elohelyek" Relationship="Self.dino_es_elohely" FromRole="dinok" ToRole="elohelyek" />
+    <NavigationProperty Name="lelohelyek" Relationship="Self.dino_es_lelohely" FromRole="dinok" ToRole="lelohelyek" />
+    <NavigationProperty Name="korok" Relationship="Self.mikorelt" FromRole="dinok" ToRole="korok" />
+    <NavigationProperty Name="taplalek" Relationship="Self.taplalkozik" FromRole="dinok" ToRole="taplalek" />
+  </EntityType>
+  <EntityType Name="elohelyek">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nev" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dinok" Relationship="Self.dino_es_elohely" FromRole="elohelyek" ToRole="dinok" />
+  </EntityType>
+  <EntityType Name="felfedezok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nev" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dinok" Relationship="Self.dinok_ibfk_1" FromRole="felfedezok" ToRole="dinok" />
+  </EntityType>
+  <EntityType Name="felhasznalok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nev" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="jelszo" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fejleszto_logikai" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="korok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nev" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idopont" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dinok" Relationship="Self.mikorelt" FromRole="korok" ToRole="dinok" />
+  </EntityType>
+  <EntityType Name="lelohelyek">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nev" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dinok" Relationship="Self.dino_es_lelohely" FromRole="lelohelyek" ToRole="dinok" />
+  </EntityType>
+  <EntityType Name="taplalek">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nev" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dinok" Relationship="Self.taplalkozik" FromRole="taplalek" ToRole="dinok" />
+  </EntityType>
+  <EntityType Name="taplalkozasi_forma">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nev" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tud_elnevezes" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dinok" Relationship="Self.dinok_ibfk_2" FromRole="taplalkozasi_forma" ToRole="dinok" />
+  </EntityType>
+  <Association Name="dinok_ibfk_1">
+    <End Role="felfedezok" Type="Self.felfedezok" Multiplicity="1" />
+    <End Role="dinok" Type="Self.dinok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="felfedezok">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dinok">
+        <PropertyRef Name="felfedezo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dinok_ibfk_2">
+    <End Role="taplalkozasi_forma" Type="Self.taplalkozasi_forma" Multiplicity="1" />
+    <End Role="dinok" Type="Self.dinok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="taplalkozasi_forma">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dinok">
+        <PropertyRef Name="taplalkozasi_forma_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dino_es_elohely">
+    <End Role="dinok" Type="Self.dinok" Multiplicity="*" />
+    <End Role="elohelyek" Type="Self.elohelyek" Multiplicity="*" />
+  </Association>
+  <Association Name="dino_es_lelohely">
+    <End Role="dinok" Type="Self.dinok" Multiplicity="*" />
+    <End Role="lelohelyek" Type="Self.lelohelyek" Multiplicity="*" />
+  </Association>
+  <Association Name="mikorelt">
+    <End Role="dinok" Type="Self.dinok" Multiplicity="*" />
+    <End Role="korok" Type="Self.korok" Multiplicity="*" />
+  </Association>
+  <Association Name="taplalkozik">
+    <End Role="dinok" Type="Self.dinok" Multiplicity="*" />
+    <End Role="taplalek" Type="Self.taplalek" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="dinoContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="dinok" EntityType="Self.dinok" />
+    <EntitySet Name="elohelyek" EntityType="Self.elohelyek" />
+    <EntitySet Name="felfedezok" EntityType="Self.felfedezok" />
+    <EntitySet Name="felhasznalok" EntityType="Self.felhasznalok" />
+    <EntitySet Name="korok" EntityType="Self.korok" />
+    <EntitySet Name="lelohelyek" EntityType="Self.lelohelyek" />
+    <EntitySet Name="taplalek" EntityType="Self.taplalek" />
+    <EntitySet Name="taplalkozasi_forma" EntityType="Self.taplalkozasi_forma" />
+    <AssociationSet Name="dinok_ibfk_1" Association="Self.dinok_ibfk_1">
+      <End Role="felfedezok" EntitySet="felfedezok" />
+      <End Role="dinok" EntitySet="dinok" />
+    </AssociationSet>
+    <AssociationSet Name="dinok_ibfk_2" Association="Self.dinok_ibfk_2">
+      <End Role="taplalkozasi_forma" EntitySet="taplalkozasi_forma" />
+      <End Role="dinok" EntitySet="dinok" />
+    </AssociationSet>
+    <AssociationSet Name="dino_es_elohely" Association="Self.dino_es_elohely">
+      <End Role="dinok" EntitySet="dinok" />
+      <End Role="elohelyek" EntitySet="elohelyek" />
+    </AssociationSet>
+    <AssociationSet Name="dino_es_lelohely" Association="Self.dino_es_lelohely">
+      <End Role="dinok" EntitySet="dinok" />
+      <End Role="lelohelyek" EntitySet="lelohelyek" />
+    </AssociationSet>
+    <AssociationSet Name="mikorelt" Association="Self.mikorelt">
+      <End Role="dinok" EntitySet="dinok" />
+      <End Role="korok" EntitySet="korok" />
+    </AssociationSet>
+    <AssociationSet Name="taplalkozik" Association="Self.taplalkozik">
+      <End Role="dinok" EntitySet="dinok" />
+      <End Role="taplalek" EntitySet="taplalek" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

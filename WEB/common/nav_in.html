@@ -1,0 +1,59 @@
+<nav class="navbar navbar-dark bg-success navbar-expand-md">
+    <div class="container-fluid">
+
+
+        <a class="navbar-brand" href="../index.php">
+            <img src="../img/logo.png" height="60px" title="Dinók könyve">
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#nav-content"
+            aria-controls="nav-content"
+            aria-expanded="false"
+            aria-label="Navigáció">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse d-md-flex flex-md-row align-items-md-center justify-content-md-center" id="nav-content">
+            <ul class="navbar-nav flex-md-row d-flex flex-column align-items-end justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link text-white px-lg-3 px-xl-4" href="#" id="alldino">Minden dinoszaurusz</a>
+                </li>
+                <li class="nav-item dropdown px-lg-3 px-xl-4">
+                    <a class="nav-link text-white dropdown-toggle" href="#" id="dropdown-korok" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Időtörténeti korok
+                    </a>
+                    <ul class="dropdown-menu bg-success" aria-labelledby="dropdown-korok" id="ul-korok">
+                        <li><a class="dropdown-item" href="#">Krétakor</a></li>
+                        <li><a class="dropdown-item" href="#">Jurakor</a></li>
+                        <li><a class="dropdown-item" href="#">Triászkor</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown px-lg-3 px-xl-4">
+                    <a class="nav-link text-white dropdown-toggle" href="#" id="dropdown-taplalek" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Táplálkozási formák
+                    </a>
+                    <ul class="dropdown-menu bg-success" aria-labelledby="dropdown-taplalek" id="ul-taplalek">
+                        <li><a class="dropdown-item" href="#">Növényevő</a></li>
+                        <li><a class="dropdown-item" href="#">Húsevő</a></li>
+                        <li><a class="dropdown-item" href="#">Mindenevő</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white px-lg-3 px-xl-4 d-md-none" href="logout.php">Kilépés</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-none d-md-flex flex-row align-items-center justify-content-end">
+            <a href="logout.php">
+                <img src="../img/exit-icon.svg" title="Kilépés">
+            </a>
+        </div>
+
+
+    </div>
+</nav>
