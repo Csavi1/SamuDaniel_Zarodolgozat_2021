@@ -29,14 +29,15 @@ namespace Dinobazis.Presenter
         {
             return repo.DbExists();
         }
-        public void CheckConnection()
+        public bool CheckConnection()
         {
             if (!ConnectionExist())
             {
                 view.LoginError = Resources.ConnectionError;
-                return;
+                return false;
             }
             view.LoginError = null;
+            return true;
         }
         public void Authenticate()
         {
@@ -46,7 +47,7 @@ namespace Dinobazis.Presenter
 
             LoginSuccess = false;
 
-            if (!ConnectionExist())
+            if (!CheckConnection())
                 return;
 
             if (string.IsNullOrWhiteSpace(view.EmailAddress))
