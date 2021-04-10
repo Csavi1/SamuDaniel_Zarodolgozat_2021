@@ -174,6 +174,7 @@ namespace Dinobazis.Views
         {
             using (var editForm = new DinoForm())
             {
+                editForm.isNew = true;
                 DialogResult dialogResult = editForm.ShowDialog(this);
                 if (dialogResult == DialogResult.OK)
                 {
@@ -188,7 +189,8 @@ namespace Dinobazis.Views
             using (var editForm = new DinoForm())
             {
                 editForm.dino = record;
-                DialogResult dialogResult = editForm.ShowDialog();
+                editForm.isNew = false;
+                DialogResult dialogResult = editForm.ShowDialog(this);
                 if (dialogResult == DialogResult.OK)
                 {
                     presenter.Modify(index, editForm.dino);

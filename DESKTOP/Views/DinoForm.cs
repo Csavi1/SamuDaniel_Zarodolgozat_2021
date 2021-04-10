@@ -27,7 +27,7 @@ namespace Dinobazis.Views
             presenter = new DinokPresenter(this);
             presenter.LoadData();
         }
-
+        public bool isNew { get; set; }
         public dinoVM dino
         {
             get

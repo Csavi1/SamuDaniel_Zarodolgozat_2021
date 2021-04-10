@@ -61,7 +61,7 @@ namespace Dinobazis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A megadott érték mérték már létezik!.
+        ///   Looks up a localized string similar to A megadott érték már létezik!.
         /// </summary>
         internal static string AlreadyExists {
             get {

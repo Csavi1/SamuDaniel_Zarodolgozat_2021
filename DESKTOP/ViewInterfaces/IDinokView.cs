@@ -10,6 +10,7 @@ namespace Dinobazis.ViewInterfaces
     interface IDinokView
     {
         dinoVM dino { get; set; }
+        bool isNew { get; set; }
 
         string[] felfedezoList { set; }
         string[] tapformaList { set; }
@@ -25,6 +26,5 @@ namespace Dinobazis.ViewInterfaces
         string testmeretError { set; }
         string testtomegError { set; }
         string leirasError { set; }
-        //string generalError { set; }
     }
 }

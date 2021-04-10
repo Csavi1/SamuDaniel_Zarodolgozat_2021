@@ -34,7 +34,7 @@ namespace Dinobazis.Presenters
                 view.nevError = Resources.FieldRequired;
                 isValid = false;
             }
-            else if (repo.DinoExists(view.dino.nev))
+            else if (view.isNew && repo.DinoExists(view.dino.nev))
             {
                 view.nevError = Resources.AlreadyExists;
                 isValid = false;

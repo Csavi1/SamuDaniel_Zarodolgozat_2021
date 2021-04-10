@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlreadyExists" xml:space="preserve">
-    <value>A megadott érték mérték már létezik!</value>
+    <value>A megadott érték már létezik!</value>
   </data>
   <data name="CannotDeletePerson" xml:space="preserve">
     <value>A felfedező nem törölhető, mert hozzá van társítva egy vagy több dinoszauruszhoz!</value>
